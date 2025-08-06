@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Men's Wear Catalog</title>
+<style>
+  /* Inline CSS inside <style> */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: #fafafa;
+    color: #222;
+  }
+  header {
+    background: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  nav a {
+    color: white;
+    margin: 0 0.75rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  main {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .card {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 280px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body {
+    padding: 1rem;
+    text-align: center;
+  }
+  .card-body h3 {
+    margin: 0.5rem 0;
+  }
+  .card-body p {
+    color: #555;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+  footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    .grid {
+      flex-direction: column;
+      align-items: center;
+    }
+    .card {
+      width: 90%;
+      max-width: 350px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Men's Wear</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Catalog</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Featured Collection</h2>
+  <div class="grid" id="productGrid">
+    <!-- Cards will be injected here by JS -->
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Men's Wear. All rights reserved.
+</footer>
+
+<script>
+  // Inline JS to populate products dynamically
+  const products = [
+    {
+      name: "Classic Leather Jacket",
+      price: "$120",
+      img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Casual Denim Shirt",
+      price: "$45",
+      img: "https://images.unsplash.com/photo-1530845644394-ff36a842e03a?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Slim Fit Chinos",
+      price: "$60",
+      img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Striped Polo Tee",
+      price: "$30",
+      img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Formal Suit Jacket",
+      price: "$250",
+      img: "https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=400&q=80"
+    }
+  ];
+
+  const grid = document.getElementById('productGrid');
+
+  products.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    card.innerHTML = `
+      <img src="${product.img}" alt="${product.name}" />
+      <div class="card-body">
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
